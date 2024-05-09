@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Link from "next/link";
 
 export default function PurchaseCard() {
   return (
@@ -38,7 +39,9 @@ export default function PurchaseCard() {
         </form>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
+        <Button variant="outline" asChild>
+          <Link href="/">Volver</Link>
+        </Button>
         <Button>Agregar</Button>
       </CardFooter>
     </Card>

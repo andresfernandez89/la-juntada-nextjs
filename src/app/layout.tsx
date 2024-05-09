@@ -19,26 +19,26 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "m-auto min-h-screen max-w-6xl bg-background font-sans antialiased",
+          "min-h-screen  bg-background text-center font-sans antialiased",
           fontInter.variable,
         )}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <header>
+          <header className="m-auto max-w-6xl">
             <nav className="p-2 text-right">
               <ModeToggle />
             </nav>
-            <h1
-              className={`${fontRoboto_mono.variable} -scroll-m-20 justify-self-end p-[40px] text-center text-4xl font-extrabold tracking-tight lg:text-5xl`}
-            >
-              La Juntada
-            </h1>
           </header>
+          <h1
+            className={`${fontRoboto_mono.variable} m-auto max-w-6xl -scroll-m-20 justify-self-end p-[40px] text-center text-4xl font-extrabold tracking-tight lg:text-5xl`}
+          >
+            La Juntada
+          </h1>
           {children}
         </ThemeProvider>
       </body>

@@ -55,17 +55,17 @@ export default function TablePurchases() {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Comprador</TableHead>
-            <TableHead>Detalle</TableHead>
-            <TableHead colSpan={2} className="text-right">
-              Monto
-            </TableHead>
+            <TableHead colSpan={2}>Detalle</TableHead>
+            <TableHead className="text-right">Monto</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {invoices.map((invoice) => (
             <TableRow key={invoice.invoice}>
               <TableCell className="font-medium">{invoice.invoice}</TableCell>
-              <TableCell colSpan={2}>{invoice.paymentStatus}</TableCell>
+              <TableCell className="text-left" colSpan={2}>
+                {invoice.paymentStatus}
+              </TableCell>
 
               <TableCell className="text-right">
                 {invoice.totalAmount}
