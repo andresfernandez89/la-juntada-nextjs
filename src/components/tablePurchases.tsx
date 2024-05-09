@@ -75,8 +75,9 @@ export default function TablePurchases() {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={3}>Total</TableCell>
-            <TableCell className="text-right">$2,500.00</TableCell>
+            <TableCell colSpan={4} className="w-full text-right">
+              <span className="text-lg">Total </span> $2,500.00
+            </TableCell>
           </TableRow>
         </TableFooter>
       </Table>
