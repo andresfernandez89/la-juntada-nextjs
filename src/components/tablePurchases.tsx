@@ -50,7 +50,6 @@ const invoices = [
 export default function TablePurchases() {
   return (
     <>
-      {" "}
       <Table>
         <TableCaption>Una lista con todas las compras.</TableCaption>
         <TableHeader>
