@@ -22,6 +22,7 @@ const config = {
       extend: {
         fontFamily: {
           sans: ["var(--font-sans)", ...fontFamily.sans],
+          mono: ["var(--font-roboto-mono)", ...fontFamily.sans],
         },
       },
       colors: {
