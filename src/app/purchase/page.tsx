@@ -1,4 +1,4 @@
-import PurchaseCard from "@/components/purchaseCard";
+import PurchaseCard from "@/components/cardPurchase";
 
 export default function page() {
   return (
