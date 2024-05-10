@@ -33,7 +33,9 @@ export default function TablePurchases() {
         <TableBody>
           {purchases.map((purchase) => (
             <TableRow key={purchase.id}>
-              <TableCell className="font-medium">{purchase.user}</TableCell>
+              <TableCell className="text-left font-medium">
+                {purchase.user}
+              </TableCell>
               <TableCell className="text-left" colSpan={2}>
                 {purchase.detail}
               </TableCell>
