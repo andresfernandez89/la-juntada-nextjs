@@ -1,5 +1,6 @@
 import { ModeToggle } from "@/components/modeToggle";
 import { ThemeProvider } from "@/components/theme-provider";
+import { PurchaseProvider } from "@/context/PurchaseContext";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { fontInter, fontRoboto_mono } from "./fonts";
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen  bg-background text-center font-sans antialiased",
@@ -39,7 +40,7 @@ export default function RootLayout({
           >
             La Juntada
           </h1>
-          {children}
+          <PurchaseProvider>{children}</PurchaseProvider>
         </ThemeProvider>
       </body>
     </html>
