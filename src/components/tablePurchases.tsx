@@ -44,7 +44,7 @@ export default function TablePurchases() {
               </TableCell>
 
               <TableCell className="text-right">{purchase.amount}</TableCell>
-              <div className="flex items-center gap-x-2 py-2">
+              <TableCell className="flex items-center gap-x-2 py-2">
                 <Button className="bg-slate-300 hover:bg-slate-100">
                   <RiEditFill />
                 </Button>
@@ -56,7 +56,7 @@ export default function TablePurchases() {
                 >
                   <FaRegTrashAlt />
                 </Button>
-              </div>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
