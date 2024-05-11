@@ -1,11 +1,12 @@
 "use client";
-import { IPurchase } from "@/app/interfaces/Purchase";
+import { CreatePurchase } from "@/app/interfaces/Purchase";
+import { Purchase as typePurchase } from "@prisma/client";
 import { createContext, useContext, useState } from "react";
 
 export const PurchaseContext = createContext<{
-  purchases: any[];
+  purchases: typePurchase[];
   getAllPurchases: () => Promise<void>;
-  createPurchase: (purchase: IPurchase) => Promise<void>;
+  createPurchase: (purchase: CreatePurchase) => Promise<void>;
   deletePurchase: (id: number) => Promise<void>;
 }>({
   purchases: [],
@@ -19,14 +20,14 @@ export const PurchaseProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [purchases, setPurchases] = useState<IPurchase[]>([]);
+  const [purchases, setPurchases] = useState<typePurchase[]>([]);
 
   async function getAllPurchases() {
     const res = await fetch("/api/purchases");
     const data = await res.json();
     setPurchases(data);
   }
-  async function createPurchase(purchase: IPurchase) {
+  async function createPurchase(purchase: CreatePurchase) {
     const res = await fetch("/api/purchases", {
       method: "POST",
       body: JSON.stringify(purchase),

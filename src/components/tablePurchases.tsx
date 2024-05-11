@@ -15,7 +15,6 @@ import { useEffect } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { RiEditFill } from "react-icons/ri";
 import { Button } from "./ui/button";
-
 export default function TablePurchases() {
   const { purchases, getAllPurchases, deletePurchase } = usePurchases();
 
@@ -50,7 +49,8 @@ export default function TablePurchases() {
                 </Button>
                 <Button
                   onClick={async () => {
-                    deletePurchase(purchase.id);
+                    if (confirm("¿Seguro qué deseas eliminarlo?"))
+                      deletePurchase(purchase.id);
                   }}
                   variant="destructive"
                 >
