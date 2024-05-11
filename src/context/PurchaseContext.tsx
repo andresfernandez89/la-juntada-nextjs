@@ -6,10 +6,12 @@ export const PurchaseContext = createContext<{
   purchases: any[];
   getAllPurchases: () => Promise<void>;
   createPurchase: (purchase: IPurchase) => Promise<void>;
+  deletePurchase: (id: number) => Promise<void>;
 }>({
   purchases: [],
   getAllPurchases: async () => {},
   createPurchase: async () => {},
+  deletePurchase: async () => {},
 });
 
 export const PurchaseProvider = ({
@@ -35,9 +37,17 @@ export const PurchaseProvider = ({
     const newPurchase = await res.json();
     setPurchases([...purchases, newPurchase]);
   }
+
+  async function deletePurchase(id: number) {
+    const res = await fetch(`/api/purchases/${id}`, {
+      method: "DELETE",
+    });
+    const dataDeleted = await res.json();
+    setPurchases(purchases.filter((item) => item.id !== id));
+  }
   return (
     <PurchaseContext.Provider
-      value={{ purchases, getAllPurchases, createPurchase }}
+      value={{ purchases, getAllPurchases, createPurchase, deletePurchase }}
     >
       {children}
     </PurchaseContext.Provider>

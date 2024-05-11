@@ -12,9 +12,12 @@ import {
 import { usePurchases } from "@/context/PurchaseContext";
 import { totalAmount } from "@/lib/utils";
 import { useEffect } from "react";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { RiEditFill } from "react-icons/ri";
+import { Button } from "./ui/button";
 
 export default function TablePurchases() {
-  const { purchases, getAllPurchases } = usePurchases();
+  const { purchases, getAllPurchases, deletePurchase } = usePurchases();
 
   useEffect(() => {
     getAllPurchases();
@@ -41,6 +44,19 @@ export default function TablePurchases() {
               </TableCell>
 
               <TableCell className="text-right">{purchase.amount}</TableCell>
+              <div className="flex items-center gap-x-2 py-2">
+                <Button className="bg-slate-300 hover:bg-slate-100">
+                  <RiEditFill />
+                </Button>
+                <Button
+                  onClick={async () => {
+                    deletePurchase(purchase.id);
+                  }}
+                  variant="destructive"
+                >
+                  <FaRegTrashAlt />
+                </Button>
+              </div>
             </TableRow>
           ))}
         </TableBody>
