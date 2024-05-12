@@ -1,6 +1,7 @@
 "use client";
 import { CreatePurchase } from "@/app/interfaces/Purchase";
 import { Purchase as typePurchase } from "@prisma/client";
+import { useRouter } from "next/navigation";
 import { createContext, useContext, useState } from "react";
 
 export const PurchaseContext = createContext<{
@@ -21,6 +22,7 @@ export const PurchaseProvider = ({
   children: React.ReactNode;
 }) => {
   const [purchases, setPurchases] = useState<typePurchase[]>([]);
+  const router = useRouter();
 
   async function getAllPurchases() {
     const res = await fetch("/api/purchases");
@@ -37,6 +39,7 @@ export const PurchaseProvider = ({
     });
     const newPurchase = await res.json();
     setPurchases([...purchases, newPurchase]);
+    router.push("/");
   }
 
   async function deletePurchase(id: number) {
