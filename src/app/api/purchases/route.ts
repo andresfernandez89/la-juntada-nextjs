@@ -32,3 +32,14 @@ export async function POST(request: Request) {
     }
   }
 }
+
+export async function DELETE() {
+  try {
+    const deletedPurchaseInfo = await prisma.purchase.deleteMany();
+    return NextResponse.json(deletedPurchaseInfo);
+  } catch (error) {
+    if (error instanceof Error) {
+      return NextResponse.json({ message: error.message }, { status: 500 });
+    }
+  }
+}

@@ -11,6 +11,7 @@ export const PurchaseContext = createContext<{
   createPurchase: (purchase: CreatePurchase) => Promise<void>;
   updatePurchase: (id: number, purchase: UpdatePurchase) => Promise<void>;
   deletePurchase: (id: number) => Promise<void>;
+  deleteAllPurchases: () => Promise<void>;
   selectedPurchase: typePurchase | null;
   setSelectedPurchase: (purchase: typePurchase | null) => void;
 }>({
@@ -20,6 +21,7 @@ export const PurchaseContext = createContext<{
   createPurchase: async (purchase: CreatePurchase) => {},
   updatePurchase: async (id: number, purchase: UpdatePurchase) => {},
   deletePurchase: async (id: number) => {},
+  deleteAllPurchases: async () => {},
   selectedPurchase: null,
   setSelectedPurchase: (purchase: typePurchase | null) => {},
 });
@@ -83,6 +85,13 @@ export const PurchaseProvider = ({
     });
     setPurchases(purchases.filter((item) => item.id !== id));
   }
+
+  async function deleteAllPurchases() {
+    const res = await fetch("/api/purchases/", {
+      method: "DELETE",
+    });
+    setPurchases([]);
+  }
   return (
     <PurchaseContext.Provider
       value={{
@@ -92,6 +101,7 @@ export const PurchaseProvider = ({
         createPurchase,
         updatePurchase,
         deletePurchase,
+        deleteAllPurchases,
         selectedPurchase,
         setSelectedPurchase,
       }}
