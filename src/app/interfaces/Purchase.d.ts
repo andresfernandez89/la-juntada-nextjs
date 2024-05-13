@@ -7,3 +7,5 @@ export interface IPurchase {
   detail: string;
   amount: number;
 }
+
+export type UpdatePurchase = Partial<CreatePurchase>;

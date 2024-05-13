@@ -51,10 +51,10 @@ export async function DELETE(request: Request, { params }: Params) {
 
 export async function PUT(request: Request, { params }: Params) {
   try {
-    const { detail } = await request.json();
+    const dataUpdate = await request.json();
     const updatedPurchase = await prisma.purchase.update({
       where: { id: Number(params.id) },
-      data: { detail },
+      data: dataUpdate,
     });
 
     return NextResponse.json(updatedPurchase);

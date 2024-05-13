@@ -12,9 +12,22 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { usePurchases } from "@/context/PurchaseContext";
 import Link from "next/link";
+import { useEffect } from "react";
 
-export default function PurchaseCard() {
-  const { createPurchase } = usePurchases();
+export default function CardPurchase({
+  id,
+  status,
+}: {
+  id: string;
+  status: string;
+}) {
+  const { createPurchase, updatePurchase, getPurchaseById, selectedPurchase } =
+    usePurchases();
+
+  useEffect(() => {
+    getPurchaseById(Number(id));
+  }, [id]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -24,8 +37,9 @@ export default function PurchaseCard() {
     const amount = parseFloat(
       (form.elements.namedItem("amount") as HTMLInputElement).value,
     );
-
-    createPurchase({ user, detail, amount });
+    status === "create"
+      ? createPurchase({ user, detail, amount })
+      : updatePurchase(Number(id), { user, detail, amount });
   };
   return (
     <Card className="w-[350px]">
@@ -40,14 +54,28 @@ export default function PurchaseCard() {
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="user">¿Quién compró?</Label>
-              <Input id="user" name="user" placeholder="Nombre completo" />
+              <Input
+                id="user"
+                name="user"
+                placeholder={
+                  status === "create" ? "Nombre completo" : undefined
+                }
+                defaultValue={
+                  status === "edit" ? selectedPurchase?.user : undefined
+                }
+              />
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="detail">¿Qué comprasté?</Label>
               <Input
                 id="detail"
                 name="detail"
-                placeholder="Detalle de compra"
+                placeholder={
+                  status === "create" ? "Detalle de compra" : undefined
+                }
+                defaultValue={
+                  status === "edit" ? selectedPurchase?.detail : undefined
+                }
               />
             </div>
             <div className="flex flex-col space-y-1.5">
@@ -56,7 +84,12 @@ export default function PurchaseCard() {
                 id="amount"
                 name="amount"
                 type="number"
-                placeholder="Ingresa el monto"
+                placeholder={
+                  status === "create" ? "Ingresa el monto" : undefined
+                }
+                defaultValue={
+                  status === "edit" ? selectedPurchase?.amount : undefined
+                }
               />
             </div>
           </div>
@@ -65,7 +98,9 @@ export default function PurchaseCard() {
           <Button variant="outline" asChild>
             <Link href="/">Volver</Link>
           </Button>
-          <Button type="submit">Agregar</Button>
+          <Button type="submit">
+            {status == "create" ? "Agregar" : "Editar"}
+          </Button>
         </CardFooter>
       </form>
     </Card>

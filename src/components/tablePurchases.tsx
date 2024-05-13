@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import { usePurchases } from "@/context/PurchaseContext";
 import { totalAmount } from "@/lib/utils";
+import Link from "next/link";
 import { useEffect } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { RiEditFill } from "react-icons/ri";
@@ -19,7 +20,10 @@ export default function TablePurchases() {
   const { purchases, getAllPurchases, deletePurchase } = usePurchases();
 
   useEffect(() => {
-    getAllPurchases();
+    const fetchData = async () => {
+      await getAllPurchases();
+    };
+    fetchData();
   }, []);
   return (
     <>
@@ -44,8 +48,10 @@ export default function TablePurchases() {
 
               <TableCell className="text-right">{purchase.amount}</TableCell>
               <TableCell className="flex items-center gap-x-2 py-2">
-                <Button className="bg-slate-300 hover:bg-slate-100">
-                  <RiEditFill />
+                <Button asChild className="bg-slate-300 hover:bg-slate-100">
+                  <Link href={`/purchase/${purchase.id}`}>
+                    <RiEditFill />
+                  </Link>
                 </Button>
                 <Button
                   onClick={async () => {
