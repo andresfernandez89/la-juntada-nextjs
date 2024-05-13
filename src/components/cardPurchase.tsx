@@ -63,6 +63,7 @@ export default function CardPurchase({
                 defaultValue={
                   status === "edit" ? selectedPurchase?.user : undefined
                 }
+                required
               />
             </div>
             <div className="flex flex-col space-y-1.5">
@@ -76,6 +77,7 @@ export default function CardPurchase({
                 defaultValue={
                   status === "edit" ? selectedPurchase?.detail : undefined
                 }
+                required
               />
             </div>
             <div className="flex flex-col space-y-1.5">
@@ -90,6 +92,7 @@ export default function CardPurchase({
                 defaultValue={
                   status === "edit" ? selectedPurchase?.amount : undefined
                 }
+                required
               />
             </div>
           </div>
