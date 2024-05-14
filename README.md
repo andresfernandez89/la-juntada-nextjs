@@ -1,4 +1,4 @@
-# MARKETPLACE NEXT JS
+# LA JUNTANDA - NEXT JS
 
 Website to calculate the cost of meeting friends
 
@@ -19,13 +19,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd my-project
-```
-
-Change branch
-
-```bash
-  git switch grupo1-act5
+  cd la-juntada-nextjs
 ```
 
 Install dependencies
@@ -42,7 +36,7 @@ Start the server
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your **`.env.local`** file
+To run this project, you will need to add the following environment variables to your **`.env`** file
 
 `NEXT_PUBLIC_API_URI="file:./dev.db"`
 
