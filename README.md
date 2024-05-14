@@ -2,8 +2,6 @@
 
 Website to calculate the cost of meeting friends
 
-## Demo
-
 ## Tech Stack
 
 Next JS, TypeScript, Tailwind, Shadcn, Prisma.
