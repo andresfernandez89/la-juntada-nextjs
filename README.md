@@ -6,6 +6,8 @@ La Juntada is a web application designed to calculate the total sum of purchases
 
 ## Demo
 
+https://lajuntada.vercel.app/
+
 ## Table of Contents
 
 - [Stack](#stack)
@@ -23,7 +25,7 @@ La Juntada is a web application designed to calculate the total sum of purchases
 - **Styling**: Tailwind CSS
 - **Language**: TypeScript
 - **Version Control**: Git
-- **Deployment**: Configured for Cloudflare Pages
+- **Deployment**: Vercel
 
 ## Installation
 

@@ -25,7 +25,7 @@ export default function CardPurchase({
     usePurchases();
 
   useEffect(() => {
-    if (status === "update") {
+    if (status === "edit") {
       getPurchaseById(Number(id));
     }
   }, [id]);
