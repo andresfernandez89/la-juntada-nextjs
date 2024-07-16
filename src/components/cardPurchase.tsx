@@ -18,14 +18,16 @@ export default function CardPurchase({
   id,
   status,
 }: {
-  id: string;
+  id?: string | undefined;
   status: string;
 }) {
   const { createPurchase, updatePurchase, getPurchaseById, selectedPurchase } =
     usePurchases();
 
   useEffect(() => {
-    getPurchaseById(Number(id));
+    if (status === "update") {
+      getPurchaseById(Number(id));
+    }
   }, [id]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

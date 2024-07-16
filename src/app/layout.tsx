@@ -6,8 +6,6 @@ import type { Metadata } from "next";
 import { fontInter, fontRoboto_mono } from "./fonts";
 import "./globals.css";
 
-export const runtime = "edge";
-
 export const metadata: Metadata = {
   title: "La juntada",
   description: "Calcula las cuentas con tus amigos.",

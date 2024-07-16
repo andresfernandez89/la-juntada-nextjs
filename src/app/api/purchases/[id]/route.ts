@@ -2,8 +2,6 @@ import { prisma } from "@/lib/prisma";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { NextResponse } from "next/server";
 
-export const runtime = "edge";
-
 interface Params {
   params: {
     id: string;
